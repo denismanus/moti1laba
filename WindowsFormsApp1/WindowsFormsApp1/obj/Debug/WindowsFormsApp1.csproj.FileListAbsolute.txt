@@ -18,12 +18,14 @@ C:\Users\Денис\Desktop\Проекты\PP\moti1laba\WindowsFormsApp1\Windows
 C:\Users\Денис\Desktop\Проекты\PP\moti1laba\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
 C:\Users\Денис\Desktop\Проекты\PP\moti1laba\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
 C:\Users\Денис\Desktop\Проекты\PP\moti1laba\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
-C:\Users\Денис\Desktop\Проекты\PP\moti1laba\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csprojResolveAssemblyReference.cache
 C:\Users\Денис\Desktop\Проекты\PP\moti1laba\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
-C:\Users\Денис\Desktop\Проекты\PP\moti1laba\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form2.resources
 C:\Users\Денис\Desktop\Проекты\PP\moti1laba\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form3.resources
 C:\Users\Денис\Desktop\Проекты\PP\moti1laba\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form4.resources
 C:\Users\Денис\Desktop\Проекты\PP\moti1laba\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
 C:\Users\Денис\Desktop\Проекты\PP\moti1laba\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.Cache
 C:\Users\Денис\Desktop\Проекты\PP\moti1laba\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Users\Денис\Desktop\Проекты\PP\moti1laba\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+C:\Users\Денис\Desktop\Проекты\PP\moti1laba\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Mark.resources
+C:\Users\Денис\Desktop\Проекты\PP\moti1laba\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Vector.resources
+C:\Users\Денис\Desktop\Проекты\PP\moti1laba\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csprojResolveAssemblyReference.cache
+C:\Users\Денис\Desktop\Проекты\PP\moti1laba\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Participant.resources
