@@ -7,20 +7,28 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1
 {
-    static class Queries
+    class Queries
     {
-        public static SqlCommand AddPerson(string name, string rang = null)
+        private static DatabaseController db = new DatabaseController();
+
+        private static void Execute(SqlCommand command)
+        {
+            db.Perform(command);
+        }
+
+        public static void AddPerson(string name, string rang = null)
         {
             SqlCommand command = new SqlCommand("INSERT INTO LPR " +
                 "(LName, LRange) " +
                 "VALUES " +
-                "('@LName', '@LRange'));");
+                "('@LName', @LRange);");
             var parameters = command.Parameters;
             parameters.AddWithValue("@LName", name);
-            parameters.AddWithValue("@LRange", rang);
-            return command;
+            parameters.AddWithValue("@LRange", int.Parse(rang));
+            Execute(command);
         }
-        public static SqlCommand AddAlternative(string name)
+
+        public static void AddAlternative(string name)
         {
             SqlCommand command = new SqlCommand("INSERT INTO Alternative " +
                 "(AName) " +
@@ -28,9 +36,10 @@ namespace WindowsFormsApp1
                 "('@AName');");
             var parameters = command.Parameters;
             parameters.AddWithValue("@AName", name);
-            return command;
+            Execute(command);
         }
-        public static SqlCommand AddCriterion(string name, string range, string weight,
+
+        public static void AddCriterion(string name, string range, string weight,
             string type, string optimType, string  izmer, string scaleType)
         {
             SqlCommand command = new SqlCommand("INSERT INTO Criterion" +
@@ -48,29 +57,29 @@ namespace WindowsFormsApp1
             parameters.AddWithValue("@OptimType", optimType);
             parameters.AddWithValue("@Edlzmer"  , izmer);
             parameters.AddWithValue("@ScaleType", scaleType);
-            return command;
+            Execute(command);
         }
-        public static SqlCommand AddMark(string name, int criterionNumber)
+        public static void AddMark(string name, int criterionNumber)
         {
             SqlCommand command = new SqlCommand("INSERT INTO Mark " +
                 "(CNum, MName) " +
                 "VALUES " +
-                "('@CNum', '@MName'));");
+                "('@CNum', '@MName');");
             var parameters = command.Parameters;
             parameters.AddWithValue("@CNum", criterionNumber);
             parameters.AddWithValue("@MName", name);
-            return command;
+            Execute(command);
         }
-        public static SqlCommand AddVector(int alternativeNumber, int markNumber)
+        public static void AddVector(int alternativeNumber, int markNumber)
         {
             SqlCommand command = new SqlCommand("INSERT INTO Vector " +
                 "(ANum, MNum) " +
                 "VALUES " +
-                "('@ANum', '@MNum'));");
+                "('@ANum', '@MNum');");
             var parameters = command.Parameters;
             parameters.AddWithValue("@ANum", alternativeNumber);
             parameters.AddWithValue("@MNum", markNumber);
-            return command;
+            Execute(command);
         }
 
         public static SqlCommand GetCriteriaNameAndNum()

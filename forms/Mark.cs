@@ -33,8 +33,7 @@ namespace WindowsFormsApp1
             if (textBox1.Text != null && comboBox1.SelectedItem!=null && textBox1.Text != "")
             {
                 string criteria = comboBox1.SelectedValue.ToString();
-                MessageBox.Show(criteria);
-                db.Perform(Queries.AddMark(textBox1.Text, Int32.Parse(criteria)));
+                Queries.AddMark(textBox1.Text, Int32.Parse(criteria));
             }
         }
     }

@@ -22,10 +22,9 @@ namespace WindowsFormsApp1
             if ((textBox1.Text!=null&&textBox1.Text!="")&&comboBox1.SelectedItem!=null&&comboBox2.SelectedItem!=null&&comboBox3!=null)
             {
                 DatabaseController db = new DatabaseController();
-                string query = Queries.AddCriterion(textBox1.Text, textBox2.Text, 
+                Queries.AddCriterion(textBox1.Text, textBox2.Text, 
                     textBox3.Text, comboBox3.SelectedItem.ToString(), 
                     comboBox2.SelectedItem.ToString(), textBox4.Text, comboBox1.SelectedItem.ToString());
-                db.Perform(query);
             }
             else
             {

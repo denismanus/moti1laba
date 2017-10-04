@@ -37,8 +37,7 @@ namespace WindowsFormsApp1
             if (comboBox2.SelectedItem != null && comboBox1.SelectedItem != null)
             {
                 string criteria = comboBox2.SelectedValue.ToString();
-                MessageBox.Show(criteria);
-                db.Perform(Queries.AddVector(Int32.Parse(comboBox1.SelectedValue.ToString()), Int32.Parse(criteria)));
+                Queries.AddVector(Int32.Parse(comboBox1.SelectedValue.ToString()), Int32.Parse(criteria));
             }
         }
     }

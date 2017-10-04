@@ -46,12 +46,13 @@ namespace WindowsFormsApp1
             }
         }
         
-        public bool Perform(string query, DataSet data)
+        public bool Perform(SqlCommand query, DataSet data)
         {
             try
             {
                 SqlConnection connection = Connect();
-                SqlDataAdapter dataAdapter = new SqlDataAdapter(query, connection);
+                query.Connection = connection;
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(query);
                 dataAdapter.Fill(data);
                 connection.Close();
                 return true;

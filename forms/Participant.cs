@@ -21,13 +21,12 @@ namespace WindowsFormsApp1
         {
             if(textBox1.Text!=""&&textBox1.Text!=null)
             {
-                DatabaseController db = new DatabaseController();
                 string rang = "";
                 if(comboBox1.SelectedItem!=null)
                 {
                     rang = comboBox1.SelectedItem.ToString();
                 }
-                db.Perform(Queries.AddPerson(textBox1.Text, rang));
+                Queries.AddPerson(textBox1.Text, rang);
             }
         }
 
