@@ -11,9 +11,7 @@ namespace WindowsFormsApp1
 {
     class DataBaseController
     {
-        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;
-        AttachDbFilename='C:\Users\Tom\Desktop\desktop bullshit\Методы Оптимизации\1лаба\WindowsFormsApp1\WindowsFormsApp1\Database1.mdf';
-        Integrated Security=True";
+        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Денис\Desktop\Проекты\PP\moti1laba\WindowsFormsApp1\WindowsFormsApp1\Database1.mdf;Integrated Security=True";
 
         private SqlConnection Connect()
         {
