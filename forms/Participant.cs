@@ -21,7 +21,7 @@ namespace WindowsFormsApp1
         {
             if(textBox1.Text!=""&&textBox1.Text!=null)
             {
-                DataBaseController db = new DataBaseController();
+                DatabaseController db = new DatabaseController();
                 string rang = "";
                 if(comboBox1.SelectedItem!=null)
                 {

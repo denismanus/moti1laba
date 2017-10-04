@@ -26,7 +26,7 @@ namespace WindowsFormsApp1
         {
             if (textBox1.Text != null)
             {
-                DataBaseController db = new DataBaseController();
+                DatabaseController db = new DatabaseController();
                 db.Perform(Queries.AddAlternative(textBox1.Text));
             }
         }

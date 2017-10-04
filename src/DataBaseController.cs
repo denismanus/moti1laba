@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace WindowsFormsApp1
 {
-    class DataBaseController
+    class DatabaseController
     {
         string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + System.IO.Path.Combine(Application.StartupPath, "Database1.mdf") + "; Integrated Security=True";
 
         private SqlConnection Connect()
         {
-            
             try
             {
                 SqlConnection connection = new SqlConnection(connectionString);
@@ -24,27 +24,24 @@ namespace WindowsFormsApp1
             }
             catch(Exception err)
             {
-                MessageBox.Show(err.Message);
+                Trace.TraceError(err.Message);
                 return null;
             }
         }
 
-        public bool Perform(string query)
+        public bool Perform(SqlCommand command)
         {
             try
             {
                 SqlConnection connection = Connect();
-                SqlCommand command = new SqlCommand();
-                command.CommandText = query;
                 command.Connection = connection;
                 command.ExecuteNonQuery();
                 connection.Close();
-                MessageBox.Show("Добавлено");
                 return true;
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message);
+                Trace.TraceError(err.Message);
                 return false;
             }
         }
@@ -61,7 +58,7 @@ namespace WindowsFormsApp1
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message);
+                Trace.TraceError(err.Message);
                 return false;
             }
         }

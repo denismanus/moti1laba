@@ -12,7 +12,7 @@ namespace WindowsFormsApp1
 {
     public partial class Vector : Form
     {
-        DataBaseController db = new DataBaseController();
+        DatabaseController db = new DatabaseController();
         public Vector()
         {
             InitializeComponent();

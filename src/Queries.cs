@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,48 +9,87 @@ namespace WindowsFormsApp1
 {
     static class Queries
     {
-        public static string AddPerson(string name, string rang = null)
+        public static SqlCommand AddPerson(string name, string rang = null)
         {
-            return @"INSERT INTO LPR (LName, LRange) VALUES ('" + name + "', '" + rang + "');";
+            SqlCommand command = new SqlCommand("INSERT INTO LPR " +
+                "(LName, LRange) " +
+                "VALUES " +
+                "('@LName', '@LRange'));");
+            var parameters = command.Parameters;
+            parameters.AddWithValue("@LName", name);
+            parameters.AddWithValue("@LRange", rang);
+            return command;
         }
-        public static string AddAlternative(string name)
+        public static SqlCommand AddAlternative(string name)
         {
-            return  @"INSERT INTO Alternative (AName) VALUES ('" + name.ToString() + "');";
+            SqlCommand command = new SqlCommand("INSERT INTO Alternative " +
+                "(AName) " +
+                "VALUES " +
+                "('@AName');");
+            var parameters = command.Parameters;
+            parameters.AddWithValue("@AName", name);
+            return command;
         }
-        public static string AddCriterion(string name, string rang, string weight, string type,
-                string optimType, string  izmer, string scaleType)
+        public static SqlCommand AddCriterion(string name, string range, string weight,
+            string type, string optimType, string  izmer, string scaleType)
         {
-            return @"INSERT INTO Criterion (Cname, CRange, CWeight, CType, OptimType, Edlzmer, ScaleType)
-            VALUES ('" + name.ToString() + "','" + rang.ToString() + "','" + weight.ToString() + "'," +
-            "'" + type.ToString() + "','" + optimType.ToString() + "','" + izmer.ToString() + "'" +
-            ",'" + scaleType.ToString() + "' );";
+            SqlCommand command = new SqlCommand("INSERT INTO Criterion" +
+                " (" +
+                "Cname, CRange, CWeight, CType, OptimType, Edlzmer, ScaleType) " +
+                "VALUES (" +
+                "'@CName', '@CRange', '@CWeight', '@CType', '@OptimType', '@Edlzmer', '@ScaleType'" +
+                ");");
+
+            var parameters = command.Parameters;
+            parameters.AddWithValue("@CName"    , name);
+            parameters.AddWithValue("@CRange"   , range);
+            parameters.AddWithValue("@CWeight"  , weight);
+            parameters.AddWithValue("@CType"    , type);
+            parameters.AddWithValue("@OptimType", optimType);
+            parameters.AddWithValue("@Edlzmer"  , izmer);
+            parameters.AddWithValue("@ScaleType", scaleType);
+            return command;
         }
-        public static string AddMark(string name, int criterionNumber)
+        public static SqlCommand AddMark(string name, int criterionNumber)
         {
-            return @"INSERT INTO Mark (CNum, MName) VALUES ('" + criterionNumber + "', '" + name.ToString() + "' ); "; 
+            SqlCommand command = new SqlCommand("INSERT INTO Mark " +
+                "(CNum, MName) " +
+                "VALUES " +
+                "('@CNum', '@MName'));");
+            var parameters = command.Parameters;
+            parameters.AddWithValue("@CNum", criterionNumber);
+            parameters.AddWithValue("@MName", name);
+            return command;
         }
-        public static string AddVector(int alternativeNumber, int markNumber)
+        public static SqlCommand AddVector(int alternativeNumber, int markNumber)
         {
-            return @"INSERT INTO Vector (ANum, MNum) VALUES ('" + alternativeNumber + "', '" + markNumber + "' ); ";
+            SqlCommand command = new SqlCommand("INSERT INTO Vector " +
+                "(ANum, MNum) " +
+                "VALUES " +
+                "('@ANum', '@MNum'));");
+            var parameters = command.Parameters;
+            parameters.AddWithValue("@ANum", alternativeNumber);
+            parameters.AddWithValue("@MNum", markNumber);
+            return command;
         }
 
-        public static string GetCriteriaNameAndNum()
+        public static SqlCommand GetCriteriaNameAndNum()
         {
-            return @"SELECT CName, CNum FROM Criterion";
+            return new SqlCommand("SELECT CName, CNum FROM Criterion");
         }
 
-        public static string GetMark()
+        public static SqlCommand GetMark()
         {
-            return @"SELECT MNum, MName FROM Mark";
+            return new SqlCommand("SELECT MNum, MName FROM Mark");
         }
 
-        public static string GetAlternative()
+        public static SqlCommand GetAlternative()
         {
-            return @"SELECT * FROM Alternative";
+            return new SqlCommand("SELECT * FROM Alternative");
         }
-        public static string GetPersons()
+        public static SqlCommand GetPersons()
         {
-            return @"SELECT * FROM LPR";
+            return new SqlCommand("SELECT * FROM LPR");
         }
     }
 }

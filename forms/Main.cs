@@ -12,7 +12,7 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        DataBaseController db = new DataBaseController();
+        DatabaseController db = new DatabaseController();
         List<Person> persons = new List<Person>();
 
         private void FillPersonListBox()
