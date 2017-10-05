@@ -14,6 +14,7 @@ namespace WindowsFormsApp1
     {
         DatabaseController db = new DatabaseController();
         List<Person> persons = new List<Person>();
+        BindingSource personData = new BindingSource();
 
         private void FillPersonListBox()
         {
@@ -24,13 +25,24 @@ namespace WindowsFormsApp1
                 Person person = new Person(Int32.Parse(row["LNum"].ToString()), Int32.Parse(row["LRange"].ToString()), row["LName"].ToString());
                 persons.Add(person);
             }
-            listBox1.DataSource =  persons;
-            //listBox1.ValueMember = "LNum";
+            listBox1.DataSource = personData;
+            listBox1.ValueMember = "Id";
             listBox1.DisplayMember = "Info";
         }
+        
+        private void FillAlternativeListBox()
+        {
+            DataSet ds = new DataSet();
+            Queries.GetAlternative(ds);
+            listBox2.DataSource = ds.Tables[0];
+            listBox2.ValueMember = "ANum";
+            listBox2.DisplayMember = "AName";
+        }
+
         public Form1()
         {
             InitializeComponent();
+            personData.DataSource = persons;
         }
 
         private void лПРToolStripMenuItem_Click(object sender, EventArgs e)
@@ -41,7 +53,7 @@ namespace WindowsFormsApp1
 
         private void альтернативаToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form3 newForm = new Form3();
+            Alternative newForm = new Alternative();
             newForm.Show();
         }
 
@@ -54,6 +66,7 @@ namespace WindowsFormsApp1
         private void Form1_Load(object sender, EventArgs e)
         {
             FillPersonListBox();
+            FillAlternativeListBox();
         }
 
         private void оценкаToolStripMenuItem_Click(object sender, EventArgs e)
@@ -78,7 +91,7 @@ namespace WindowsFormsApp1
         {
             if (listBox1.SelectedItem != null)
             {
-                MessageBox.Show(listBox1.SelectedItem.ToString());
+                Queries.DeletePersons(Int32.Parse(listBox1.SelectedValue.ToString()));
             }
         }
 
@@ -94,21 +107,26 @@ namespace WindowsFormsApp1
 
         private void button8_Click(object sender, EventArgs e)
         {
-
+            Alternative form = new Alternative();
+            form.Show();
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-
+            if (listBox2.SelectedItem != null)
+            {
+                Queries.DeleteAlternative(Int32.Parse(listBox2.SelectedValue.ToString()));
+            }
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            DataSet ds = new DataSet();
-            Queries.GetPersons(ds);
-            listBox1.DataSource = ds.Tables[0];
-            listBox1.ValueMember = "LNum";
-            listBox1.DisplayMember = "LName";
+            //DataSet ds = new DataSet();
+            //Queries.GetPersons(ds);
+            //listBox1.DataSource = ds.Tables[0];
+            //listBox1.ValueMember = "LNum";
+            //listBox1.DisplayMember = "LName";
+            FillPersonListBox();
         }
     }
 }

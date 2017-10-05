@@ -26,7 +26,7 @@ namespace WindowsFormsApp1
             comboBox1.ValueMember = "MNum";
             comboBox1.DisplayMember = "MName";
             DataSet altern = new DataSet();
-            db.Perform(Queries.GetAlternative(), altern);
+            Queries.GetAlternative(altern);
             comboBox2.DataSource = altern.Tables[0];
             comboBox2.ValueMember = "ANUM";
             comboBox2.DisplayMember = "AName";

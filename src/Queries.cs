@@ -34,7 +34,7 @@ namespace WindowsFormsApp1
             SqlCommand command = new SqlCommand("INSERT INTO Alternative " +
                 "(AName) " +
                 "VALUES " +
-                "('@AName');");
+                "(@AName);");
             var parameters = command.Parameters;
             parameters.AddWithValue("@AName", name);
             Execute(command);
@@ -93,14 +93,29 @@ namespace WindowsFormsApp1
             return new SqlCommand("SELECT MNum, MName FROM Mark");
         }
 
-        public static SqlCommand GetAlternative()
+        public static void GetAlternative(DataSet ds)
         {
-            return new SqlCommand("SELECT * FROM Alternative");
+            SqlCommand command = new SqlCommand("SELECT * FROM Alternative");
+            db.Perform(command, ds);
         }
         public static void GetPersons(DataSet ds)
         {
            SqlCommand command = new SqlCommand("SELECT * FROM LPR");
            db.Perform(command, ds);
+        }
+
+        public static void DeletePersons(int num)
+        {
+            SqlCommand command = new SqlCommand("DELETE FROM LPR WHERE LNum = @Num");
+            command.Parameters.AddWithValue("@Num", num); 
+            db.Perform(command);
+        }
+
+        public static void  DeleteAlternative(int num)
+        {
+            SqlCommand command = new SqlCommand("DELETE FROM Alternative WHERE ANum = @Num");
+            command.Parameters.AddWithValue("@Num", num);
+            db.Perform(command);
         }
     }
 }
