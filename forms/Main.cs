@@ -19,9 +19,14 @@ namespace WindowsFormsApp1
         {
             DataSet ds = new DataSet();
             Queries.GetPersons(ds);
-            listBox1.DataSource = ds.Tables[0];
-            listBox1.ValueMember = "LNum";
-            listBox1.DisplayMember = "LName";
+            foreach (DataRow row in ds.Tables[0].Rows)
+            {
+                Person person = new Person(Int32.Parse(row["LNum"].ToString()), Int32.Parse(row["LRange"].ToString()), row["LName"].ToString());
+                persons.Add(person);
+            }
+            listBox1.DataSource =  persons;
+            //listBox1.ValueMember = "LNum";
+            listBox1.DisplayMember = "Info";
         }
         public Form1()
         {

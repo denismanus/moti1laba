@@ -8,16 +8,26 @@ namespace WindowsFormsApp1
 {
     class Person
     {
+        private int id;
         private int range;
         private string name;
 
-        public Person(int m_id, string m_name)
+        public Person(int id, int range, string name)
         {
-            range = m_id;
-            name = m_name;
+            this.id = id;
+            this.range = range;
+            this.name = name;
         }
 
         public int Id
+        {
+            get
+            {
+                return id;
+            }
+        }
+
+        public int Range
         {
             get
             {
@@ -32,6 +42,15 @@ namespace WindowsFormsApp1
                 return name;
             }
         }
+
+        public string Info
+        {
+            get
+            {
+                return name + " " + range; 
+            }
+        }
+
         public override string ToString()
         {
             return name;
