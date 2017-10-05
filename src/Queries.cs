@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -21,7 +22,7 @@ namespace WindowsFormsApp1
             SqlCommand command = new SqlCommand("INSERT INTO LPR " +
                 "(LName, LRange) " +
                 "VALUES " +
-                "('@LName', @LRange);");
+                "(@LName, @LRange);");
             var parameters = command.Parameters;
             parameters.AddWithValue("@LName", name);
             parameters.AddWithValue("@LRange", int.Parse(rang));
@@ -96,9 +97,10 @@ namespace WindowsFormsApp1
         {
             return new SqlCommand("SELECT * FROM Alternative");
         }
-        public static SqlCommand GetPersons()
+        public static void GetPersons(DataSet ds)
         {
-            return new SqlCommand("SELECT * FROM LPR");
+           SqlCommand command = new SqlCommand("SELECT * FROM LPR");
+           db.Perform(command, ds);
         }
     }
 }

@@ -18,8 +18,10 @@ namespace WindowsFormsApp1
         private void FillPersonListBox()
         {
             DataSet ds = new DataSet();
-            db.Perform(Queries.GetPersons(), ds);
-            listBox1.DataSource = ds;
+            Queries.GetPersons(ds);
+            listBox1.DataSource = ds.Tables[0];
+            listBox1.ValueMember = "LNum";
+            listBox1.DisplayMember = "LName";
         }
         public Form1()
         {
@@ -93,6 +95,15 @@ namespace WindowsFormsApp1
         private void button7_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            DataSet ds = new DataSet();
+            Queries.GetPersons(ds);
+            listBox1.DataSource = ds.Tables[0];
+            listBox1.ValueMember = "LNum";
+            listBox1.DisplayMember = "LName";
         }
     }
 }

@@ -36,6 +36,7 @@ namespace WindowsFormsApp1
                 SqlConnection connection = Connect();
                 command.Connection = connection;
                 command.ExecuteNonQuery();
+                Trace.TraceInformation(connection.ConnectionString);
                 connection.Close();
                 return true;
             }
@@ -54,6 +55,7 @@ namespace WindowsFormsApp1
                 query.Connection = connection;
                 SqlDataAdapter dataAdapter = new SqlDataAdapter(query);
                 dataAdapter.Fill(data);
+                Trace.TraceInformation(connection.ConnectionString);
                 connection.Close();
                 return true;
             }

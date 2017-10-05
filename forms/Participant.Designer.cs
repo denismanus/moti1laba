@@ -84,7 +84,7 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Ранг компетентности:";
             // 
-            // Form2
+            // Participant
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -94,8 +94,9 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button1);
-            this.Name = "Form2";
+            this.Name = "Participant";
             this.Text = "Регистрация ЛПР";
+            this.Load += new System.EventHandler(this.Participant_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

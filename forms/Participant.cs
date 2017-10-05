@@ -30,5 +30,9 @@ namespace WindowsFormsApp1
             }
         }
 
+        private void Participant_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
