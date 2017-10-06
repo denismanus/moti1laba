@@ -104,11 +104,19 @@ namespace WindowsFormsApp1
            db.Perform(command, ds);
         }
 
+        public static void GetPerson(DataSet ds, int a)
+        {
+            SqlCommand command = new SqlCommand("SELECT * FROM LPR WHERE LNum = @Num");
+            command.Parameters.AddWithValue("@Num", a);
+            db.Perform(command, ds);
+        }
+
         public static void DeletePersons(int num)
         {
             SqlCommand command = new SqlCommand("DELETE FROM LPR WHERE LNum = @Num");
             command.Parameters.AddWithValue("@Num", num); 
             db.Perform(command);
+            FormData.DeletePerson(num);
         }
 
         public static void  DeleteAlternative(int num)

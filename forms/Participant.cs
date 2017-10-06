@@ -12,8 +12,21 @@ namespace WindowsFormsApp1
 {
     public partial class Participant : Form
     {
-        public Participant()
+        private readonly Form1 form1;
+
+        public Participant(Form1 form1)
         {
+            this.form1 = form1;
+            InitializeComponent();
+        }
+        public Participant(Form1 form1, int num)
+        {
+            DataSet ds = new DataSet();
+            this.form1 = form1;
+            Queries.GetPerson(ds, num);
+            Person editPerson = new Person(
+                Int32.Parse(ds.Tables[0].Rows[0]["LNum"].ToString()), 
+                Int32.Parse(ds.Tables[0].Rows[0]["LRange"].ToString(),  System.Globalization.NumberStylesds.Tables[0].Rows[0]["LName"].ToString()));
             InitializeComponent();
         }
 
@@ -27,7 +40,8 @@ namespace WindowsFormsApp1
                     rang = comboBox1.SelectedItem.ToString();
                 }
                 Queries.AddPerson(textBox1.Text, rang);
-            }
+                form1.FillPersonListBox();
+    }
         }
 
         private void Participant_Load(object sender, EventArgs e)

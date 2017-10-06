@@ -16,8 +16,10 @@ namespace WindowsFormsApp1
         List<Person> persons = new List<Person>();
         BindingSource personData = new BindingSource();
 
-        private void FillPersonListBox()
+        public void FillPersonListBox()
         {
+            listBox1.DataSource = null;
+            persons.Clear();
             DataSet ds = new DataSet();
             Queries.GetPersons(ds);
             foreach (DataRow row in ds.Tables[0].Rows)
@@ -29,9 +31,10 @@ namespace WindowsFormsApp1
             listBox1.ValueMember = "Id";
             listBox1.DisplayMember = "Info";
         }
-        
+
         private void FillAlternativeListBox()
         {
+            listBox2.DataSource = null;
             DataSet ds = new DataSet();
             Queries.GetAlternative(ds);
             listBox2.DataSource = ds.Tables[0];
@@ -47,8 +50,8 @@ namespace WindowsFormsApp1
 
         private void лПРToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Participant newForm = new Participant();
-            newForm.Show();
+            //Participant newForm = new Participant();
+            //newForm.Show();
         }
 
         private void альтернативаToolStripMenuItem_Click(object sender, EventArgs e)
@@ -83,7 +86,7 @@ namespace WindowsFormsApp1
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Participant newParticipant = new Participant();
+            Participant newParticipant = new Participant(this);
             newParticipant.Show();
         }
 
@@ -92,6 +95,7 @@ namespace WindowsFormsApp1
             if (listBox1.SelectedItem != null)
             {
                 Queries.DeletePersons(Int32.Parse(listBox1.SelectedValue.ToString()));
+                FillPersonListBox();
             }
         }
 
@@ -126,7 +130,12 @@ namespace WindowsFormsApp1
             //listBox1.DataSource = ds.Tables[0];
             //listBox1.ValueMember = "LNum";
             //listBox1.DisplayMember = "LName";
-            FillPersonListBox();
+            //Participant part = new Participant(Int32.Parse(listBox1.SelectedValue.ToString()));
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            FillAlternativeListBox();
         }
     }
 }

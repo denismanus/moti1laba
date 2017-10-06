@@ -160,7 +160,7 @@
             "re"});
             this.listBox1.Location = new System.Drawing.Point(3, 3);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(240, 407);
+            this.listBox1.Size = new System.Drawing.Size(240, 394);
             this.listBox1.TabIndex = 5;
             // 
             // button5
@@ -221,6 +221,7 @@
             this.button6.TabIndex = 7;
             this.button6.Text = "@";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button7
             // 
